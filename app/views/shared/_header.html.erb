@@ -37,12 +37,9 @@
       <!-- Left links -->
 
       <div class="d-flex align-items-center">
-      <button type="button" class="btn btn-primary me-3">
-      ログイン
-    </button>
-        <button type="button" class="btn btn-primary me-3">
-          簡単登録
-        </button>
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light me-3 btn-rounded" %>
+      <%= link_to "簡単登録", new_user_registration_path, class: "btn btn-outline-light me-3 btn-rounded" %>
+    
         <a
           class="btn btn-dark px-3"
           href="https://github.com/mdbootstrap/mdb-ui-kit"

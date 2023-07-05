@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-   <title>Dragons</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dragons</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,6 +14,7 @@
   </head>
   <body>
     <%= render 'shared/header' %>
+    <%= render 'shared/message' %>
    <%= yield %>
     <%= render 'shared/footer' %>
   </body>
