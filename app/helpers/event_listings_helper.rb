@@ -1,0 +1,2 @@
+module EventListingsHelper
+end
