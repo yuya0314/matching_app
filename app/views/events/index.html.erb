@@ -9,11 +9,12 @@
         <td> 場所</td> 
       </tr>
     </thead>
-    <% @event_listings.each do |event_listing| %>
+    <% @events.each do |event| %>
       <tr>
-        <td> <%= link_to event_listing.capacity, "#" %> </td>
-        <td> <%= event_listing.deadline %> </td> 
-        <td> <%= event_listing.message %> </td> 
+        <td> <%= link_to event.match, event %> </td> 
+        <td> <%= event.date %> </td> 
+        <td> <%= event.start_time %> </td> 
+        <td> <%= event.location %> </td> 
       </tr>
     <% end %>
   </table>
