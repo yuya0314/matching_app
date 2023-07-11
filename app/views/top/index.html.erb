@@ -11,7 +11,7 @@
     </thead>
     <% @event_listings.each do |event_listing| %>
       <tr>
-        <td> <%= link_to event_listing.capacity, "#" %> </td>
+        <td> <%= link_to event_listing.capacity, event_listing %> </td>
         <td> <%= event_listing.deadline %> </td> 
         <td> <%= event_listing.message %> </td> 
       </tr>

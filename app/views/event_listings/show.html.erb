@@ -1,0 +1,16 @@
+<div class="container my-5">
+<h3>予約内容の確認</h3>
+
+<p><strong>募集定員:</strong> <%= @event_listing.capacity %></p>
+<p><strong>募集締切:</strong> <%= @event_listing.deadline %></p>
+<p><strong>メッセージ:</strong> <%= @event_listing.message %></p>
+
+<div class="col-md-6 col-md-offset-3">
+<%= form_with(model: @event_listing.event_registrations.build,local: true) do |f| %>
+  <%= f.hidden_field :event_listing_id, value: @event_listing.id %>
+  <%= f.label :comment,class: "form-label" %>
+  <%= f.text_field :comment,class: "form-control"  %>
+  <%= f.submit "参加する", class: "btn btn-primary my-2 " %>
+<% end %>
+</div>
+</div>

@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :users,only:[:show]
   resources :events
   resources :event_listings
+  resources :event_registrations
 end
