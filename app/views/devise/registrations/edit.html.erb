@@ -1,44 +1,84 @@
-<div class="user-edit-page">
-
-
-  <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), class: "px-3", local: true, method: :patch do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-
-    <div class="profile">
-    <img id="profile-img-prev" src="#" class='hidden' />
-    <% if @user.profile_image.url.nil? %>
-      <div class="profile-default-img"></div>
-    <% else %>
-      <%= image_tag @user.profile_image.url, class: "profile-img", id: "profile-img" %>
-    <% end %>
-    <label class="profile-img-upload">
-      <%= f.file_field :profile_image, id: "profile_image_upload" %>ファイルを選択
-    </label>
-  </div>
-
-    <div class="form-group">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "メールアドレス" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.text_area :self_introduction, class: "form-control", placeholder: "紹介", rows: "4" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "パスワード" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "パスワードの確認" %>
-    </div>
-
-    <div class="user-edit__submit-btn">
-      <%= f.submit "保存", class: "btn btn-info text-white" %>
+<%= render "devise/shared/error_messages", resource: resource %>
+<div class="container emp-profile">
+  <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), local: true, method: :patch, class: "px-3" do |f| %>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-img">
+          <% if @user.profile_image.url.nil? %>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+          <% else %>
+            <%= image_tag @user.profile_image.url %>
+          <% end %>
+          <%= f.file_field :profile_image %> 
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="profile-tab">
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :name, "ユーザ名"%>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_field :name, autofocus: true, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :email, "Eメール" %>
+            </div>
+            <div class="col-md-6">
+              <%= f.email_field :email, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :fan_years, "ファン歴" %>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_field :fan_years, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :favorite_player, "好きな選手" %>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_field :favorite_player, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :self_introduction, "自己紹介" %>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_area :self_introduction, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :password, "パスワード" %>
+            </div>
+            <div class="col-md-6">
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :password_confirmation, "パスワードの確認" %>
+            </div>
+            <div class="col-md-6">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Password confirmation" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
+              <%= f.submit "保存", class: "btn btn-info text-white" %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
-
 </div>

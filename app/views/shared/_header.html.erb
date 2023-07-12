@@ -1,55 +1,40 @@
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0a4275;">
-  <!-- Container wrapper -->
-  <div class="container">
-    <!-- Navbar brand -->
-    <a class="navbar-brand me-2" href="https://mdbgo.com/">
-      <img
-        src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-        height="16"
-        alt="MDB Logo"
-        loading="lazy"
-        style="margin-top: -1px;"
-      />
-    </a>
-
-    <!-- Toggle button -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#navbarButtonsExample"
-      aria-controls="navbarButtonsExample"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarButtonsExample">
-      <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Dashboard</a>
-        </li>
-      </ul>
-      <!-- Left links -->
-
-      <div class="d-flex align-items-center">
-      <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light me-3 btn-rounded" %>
-      <%= link_to "簡単登録", new_user_registration_path, class: "btn btn-outline-light me-3 btn-rounded" %>
-    
-        <a
-          class="btn btn-dark px-3"
-          href="https://github.com/mdbootstrap/mdb-ui-kit"
-          role="button"
-          ><i class="fab fa-github"></i
-        ></a>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-dark">
+<div class="container p-2">
+    <a class="navbar-brand" href="/">Dra-Match</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+           <% if user_signed_in? %>
+           <li class="nav-item dropdown">
+           <a
+             class="nav-link dropdown-toggle"
+             href="#"
+             id="navbarDropdown"
+             role="button"
+             data-bs-toggle="dropdown"
+             aria-expanded="false"
+           >
+             メニュー
+           </a>
+           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+             <li>
+              <%= link_to "マイページ", user_path(current_user),class:"dropdown-item" %>
+             </li>
+             <li>
+               <a class="dropdown-item" href="#">設定</a>
+             </li>
+             <li><hr class="dropdown-divider" /></li>
+             <li>
+               <a class="dropdown-item" href="#">ログアウト</a>
+             </li>
+           </ul>
+         </li>
+             <li class="nav-item"> <%= link_to "ログアウト", destroy_user_session_path,method: :delete,class: "nav-link" %></li>
+           <% else %>
+            <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-light me-3" %></li>
+            <li class="nav-item"><%= link_to "簡単登録", new_user_registration_path, class:"btn btn-outline-light me-3" %></li>
+            <% end %>
+        </ul>
     </div>
-    <!-- Collapsible wrapper -->
-  </div>
-  <!-- Container wrapper -->
+</div>
 </nav>
-<!-- Navbar -->
