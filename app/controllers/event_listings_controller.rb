@@ -15,6 +15,6 @@ class EventListingsController < ApplicationController
   private
 
   def event_listing_params
-    params.require(:event_listing).permit(:capacity, :deadline, :message, :event_id)
+    params.require(:event_listing).permit(:capacity, :deadline, :title, :message, :event_id)
   end
 end

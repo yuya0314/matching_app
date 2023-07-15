@@ -1,21 +1,26 @@
-<div class="container">
- <h3>登録済み一覧</h3>
-  <table class="table">
+<div class="container d-flex justify-content-center">
+    <div class="row col-md-8 custyle ">
+    <table class="table table-striped custab">
     <thead>
-      <tr>
-        <td> マッチ</td> 
-        <td> 日付</td>
-        <td> 開始時間</td> 
-        <td> 場所</td> 
-      </tr>
+        <tr class="text-center">
+            <th>日付</th>
+            <th>開始時間</th>
+            <th>チーム</th>
+            <th>場所</th> 
+            <th></th>
+        </tr>
     </thead>
-    <% @events.each do |event| %>
-      <tr>
-        <td> <%= link_to event.match, event %> </td> 
-        <td> <%= event.date %> </td> 
-        <td> <%= event.start_time %> </td> 
-        <td> <%= event.location %> </td> 
-      </tr>
-    <% end %>
-  </table>
+        <% @events.each do |event| %>
+        <tr class="text-center">
+            <td><%= event.date.strftime("%m/%d") %></td>
+            <td><%= event.start_time.strftime("%H:%M")%></td>
+            <td><%= event.match %></td>
+            <td><%= event.location %></td>
+            <td>
+            <%= link_to "募集", event,class:"btn btn-primary btn-xs" %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+    </div>
 </div>

@@ -9,20 +9,28 @@
 <!-- Page content-->
 <div class="container">
 <div class="row">
-    <!-- Blog entries-->
-     
     <div class="col-lg-8">
         <!-- Featured blog post-->
+        <div class="row">
         <% @event_listings.each do |event_listing| %>
-        <div class="card mb-4">
-            <div class="card-body">
-                <div class="small text-muted">January 1, 2023</div>
-                <h2 class="card-title">Featured Post Title</h2>
-                <p class="card-text"> <%= event_listing.message %></p>
-                <%= link_to event_listing.capacity, event_listing,class:"btn btn-primary"%>
+         
+           <div class="col-lg-6">
+            <div class="card mb-4">
+              <div class="card-body">
+                  <h5 class="card-header"><%= event_listing.event.date.strftime("%m/%d") %>  <%= event_listing.event.start_time.strftime("%H:%M") %>~  <%= event_listing.event.location %></h5>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= event_listing.title %></h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <%= link_to "残り#{event_listing.capacity-event_listing.event_registrations.count}人 募集中", event_listing,class:"btn btn-primary"%>
+                
+                  </div>
+                 
+              </div>
             </div>
-        </div>
+          </div>  
+         
        <% end %>
+       </div>
         <!-- Pagination-->
         <nav aria-label="Pagination">
             <hr class="my-0" />
