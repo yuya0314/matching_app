@@ -1,0 +1,23 @@
+<div class="container d-flex justify-content-center">
+    <div class="row col-md-8 custyle ">
+
+    
+    <% @results.each do |event| %>
+        <% event.event_listings.each do |event_listing| %>
+            <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-header"><%= event_listing.event.date.strftime("%m/%d") %>  <%= event_listing.event.start_time.strftime("%H:%M") %>~  <%= event_listing.event.location %></h5>
+                <div class="card-body">
+                  <h5 class="card-title"><%= event_listing.title %></h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <%= link_to "残り#{event_listing.capacity-event_listing.event_registrations.count}人 募集中", event_listing,class:"btn btn-primary"%>
+              
+                </div>
+               
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+
+    </div>
+</div>

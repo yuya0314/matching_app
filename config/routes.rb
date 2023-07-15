@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     controllers: { registrations: 'registrations' } 
   get root 'top#index'
   resources :users,only:[:show]
-  resources :events
+  resources :events do
+    collection do
+      get 'search'
+    end
+  end
   resources :event_listings
   resources :event_registrations
 end
