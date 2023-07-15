@@ -1,25 +1,53 @@
-<div class="container my-5">
-<h3>予約内容の確認</h3>
+<div class="container eventlisting">
+  <main>
+    <div class="row py-5 justify-content-center">
+      <div class="col-md-6 col-lg-8">
+         
+        <ul class="list-group list-group-light">
+          <li class="list-group-item">
+              <div class="fw-bold"><%= @event.match %></div>
+              <div class="text-muted"><%= @event.date.strftime("%m/%d") %>  <%= @event.start_time.strftime("%H:%M") %>
+               <%= @event.location %></div>
+          </li>
+        </ul>
 
-<p><strong>観戦試合:</strong> <%= @event.match %></p>
-<p><strong>観戦日:</strong> <%= @event.date %></p>
-<p><strong>開始時間:</strong> <%= @event.start_time %></p>
-<p><strong>観戦場所:</strong> <%= @event.location %></p>
-
-<div class="col-md-6 col-md-offset-3">
-<%= form_with(model: @event_listing,local: true) do |f| %>
-  <%= f.hidden_field :event_id, value: @event.id %>
-  
-  <%= f.label :capacity,"募集人数",class: "form-label" %>
-  <%= f.text_field :capacity,class: "form-control"  %>
-
-  <%= f.label :deadline,"募集締切",class: "form-label" %>
-  <%= f.date_field :deadline,class: "form-control"  %>
-
-  <%= f.label :message,"メッセージ",class: "form-label" %>
-  <%= f.text_area :message,class: "form-control"  %>
-
-  <%= f.submit "募集", class: "btn btn-primary my-2 " %>
-<% end %>
-</div>
+        <hr class="my-4">
+        <h5 class="mb-3 fw-bold info">募集詳細を投稿</h5>
+        <%= form_with(model: @event_listing, local: true) do |f| %>
+          <%= f.hidden_field :event_id, value: @event.id %>
+          <div class="row gy-3">
+            <div class="col-md-4">
+              <%= f.label :capacity, "募集人数(自身除く)", class: "form-label" %>
+              <%= f.text_field :capacity, class: "form-control" %>
+            </div>
+            <div class="col-md-4">
+              <%= f.label :deadline, "募集締切", class: "form-label" %>
+              <%= f.date_field :deadline, class: "form-control" %>
+            </div>
+            <div class="col-md-4">
+              <%= f.label :has_ticket, "チケットの有無", class: "form-label" %>
+              <div>
+                <%= f.radio_button :has_ticket, true %>
+                <%= f.label :has_ticket_true, "有" %>
+              </div>
+              <div>
+                <%= f.radio_button :has_ticket, false %>
+                <%= f.label :has_ticket_false, "無" %>
+              </div>
+            </div>
+            <div class="col-12">
+              <%= f.label :title, "募集タイトル", class: "form-label" %>
+              <%= f.text_field :title, class: "form-control" %>
+            </div>
+            <div class="col-12">
+              <%= f.label :message, "メッセージ", class: "form-label" %>
+              <%= f.text_area :message, class: "form-control" %>
+            </div>
+            <hr class="my-4">
+            <%= f.submit "投稿する", class: "w-100 btn btn-primary btn-lg" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </main>
 </div>

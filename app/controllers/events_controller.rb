@@ -6,4 +6,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event_listing = EventListing.new
   end
+  def search
+    @q = Event.ransack(params[:q])
+    @results = @q.result
+  end
 end
