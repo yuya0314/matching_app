@@ -33,6 +33,7 @@ gem 'rails_admin-i18n'
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
 gem 'ransack'
+gem 'mysql2', '~> 0.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -45,7 +46,6 @@ group :development, :test do
   gem 'rails-erd'
   gem 'annotate'
   gem 'rubocop-airbnb'
-  gem 'mysql2', '~> 0.5'
 end
 
 group :test do
@@ -59,10 +59,6 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
-end
-
-group :production do
-  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
