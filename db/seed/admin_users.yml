@@ -1,4 +1,4 @@
 -
   id: 1
-  email: admin@mydomain
-  password: changepassword
+  email: <%= ENV['ADMIN_EMAIL'] %>
+  password: <%= ENV['ADMIN_PASSWORD'] %>
