@@ -21,7 +21,7 @@
                 <div class="card-body">
                   <h5 class="card-title"><%= event_listing.title %></h5>
                   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <%= link_to "残り#{event_listing.capacity-event_listing.event_registrations.count}人 募集中", event_listing,class:"btn btn-primary"%>
+                  <%= link_to "残り#{event_listing.capacity-event_listing.event_registrations.count}人 募集中", [event_listing.event,event_listing],class:"btn btn-primary"%>
                 </div>
               </div>
             </div>

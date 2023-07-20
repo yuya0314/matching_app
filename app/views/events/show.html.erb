@@ -2,18 +2,15 @@
   <main>
     <div class="row py-5 justify-content-center">
       <div class="col-md-6 col-lg-8">
-         
         <ul class="list-group list-group-light">
           <li class="list-group-item">
-              <div class="fw-bold"><%= @event.match %></div>
-              <div class="text-muted"><%= @event.date.strftime("%m/%d") %>  <%= @event.start_time.strftime("%H:%M") %>
-               <%= @event.location %></div>
+            <div class="fw-bold"><%= @event.match %></div>
+            <div class="text-muted"><%= @event.date.strftime("%m/%d") %>  <%= @event.start_time.strftime("%H:%M") %> <%= @event.location %></div>
           </li>
         </ul>
-
         <hr class="my-4">
         <h5 class="mb-3 fw-bold info">募集詳細を投稿</h5>
-        <%= form_with(model: @event_listing, local: true) do |f| %>
+        <%= form_with(model: [@event, @event_listing], local: true) do |f| %>
           <%= f.hidden_field :event_id, value: @event.id %>
           <div class="row gy-3">
             <div class="col-md-4">

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    resources :event_listings
   end
-  resources :event_listings
   resources :event_registrations
 end
