@@ -1,3 +1,4 @@
+<% provide(:title,'募集詳細') %>
 <div class="container">
   <main>
     <div class="row py-5 justify-content-center">
@@ -12,8 +13,8 @@
               </div>
               <div class="card-body">
                 <div class="card-title">
-                  <%= image_tag @event_listing.user.profile_image.url, style: "width: 45px; height: 45px", class: "rounded-circle" %>
-                  <%= link_to @event_listing.user.name, @event_listing.user %>
+                  <%= image_tag @event_listing.user.profile_image.url, class: "card-image rounded-circle" %>
+                  <%= link_to @event_listing.user.name, @event_listing.user,class:"user-name" %>
                 </div>
                 <h5 class="card-title"> <%= @event_listing.title %></h5>
                 <p class="card-text"> <%= @event_listing.message %></p>
@@ -30,12 +31,17 @@
               <h6>参加メンバー</h6>
               <% @event_listing.event_registrations.each do |event_registration| %>
                 <% if event_registration.user.present? %>
-                  <%= image_tag event_registration.user.profile_image.url, style: "width: 45px; height: 45px", class: "rounded-circle" %>
-                  <%= link_to event_registration.user.name, event_registration.user %>
+                  <%= image_tag event_registration.user.profile_image.url, class: "card-image rounded-circle" %>
+                  <%= link_to event_registration.user.name, event_registration.user,class:"user-name" %>
+                  <%= event_registration.comment %>
                 <% end %>
               <% end %>
-              <hr class="my-2">          
+              <hr class="my-2">
+              <% if current_user &&(current_user == @event_listing.user || @event_listing.event_registrations.any? { |r| r.user == current_user }) %>
+              <%= f.submit "参加済", class: "w-100 btn btn-primary btn-lg",disabled: true %>
+              <% else %>
               <%= f.submit "参加する", class: "w-100 btn btn-primary btn-lg" %>
+              <% end %>
             <% end %>
           </div>
         </div>

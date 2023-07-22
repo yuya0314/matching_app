@@ -24,11 +24,11 @@
             <div class="col-md-4">
               <%= f.label :has_ticket, "チケットの有無", class: "form-label" %>
               <div>
-                <%= f.radio_button :has_ticket, true %>
+                <%= f.radio_button :has_ticket, value:true %>
                 <%= f.label :has_ticket_true, "有" %>
               </div>
               <div>
-                <%= f.radio_button :has_ticket, false %>
+                <%= f.radio_button :has_ticket, value:false %>
                 <%= f.label :has_ticket_false, "無" %>
               </div>
             </div>
