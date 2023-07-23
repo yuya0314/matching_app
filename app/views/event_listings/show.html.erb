@@ -3,6 +3,11 @@
   <main>
     <div class="row py-5 justify-content-center">
       <div class="col-lg-8">
+        <div class="d-flex justify-content-end">
+          <p><%=link_to "投稿編集",[:edit, @event_listing.event, @event_listing],class:"eventlisting-edit-btn" %></p>
+          <p><%=link_to "投稿削除",[@event_listing.event, @event_listing],method: :delete,data: { confirm: '削除してもよろしいですか？'},class: "eventlisting-edit-btn" %></p>
+        </div>
+        <hr class="my-2">
         <div class="row justify-content-center">
           <div class="col-lg-9"> 
             <div class="card border border-info shadow-0 mb-3">
@@ -45,8 +50,8 @@
               <hr class="my-2">
               <% if current_user &&(current_user == @event_listing.user || @event_listing.event_registrations.any? { |r| r.user == current_user }) %>
                 <%= f.submit "参加済", class: "w-100 btn btn-primary btn-lg",disabled: true %>
-              <% elsif @event_listing.capacity-@event_listing.event_registrations.count == 0 %>
-                <%= f.submit "募集終了", class: "w-100 btn btn-primary btn-lg",disabled: true %>
+              <% elsif @event_listing.capacity-@event_listing.event_registrations.count == 0 || Date.today > @event_listing.deadline  %>
+                <%= f.submit "募集締切", class: "w-100 btn btn-primary btn-lg",disabled: true %>
               <% else %>
                 <%= f.submit "参加する", class: "w-100 btn btn-primary btn-lg" %>
               <% end %>
