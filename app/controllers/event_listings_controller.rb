@@ -3,6 +3,7 @@ class EventListingsController < ApplicationController
 
   def show
     @event_listing = EventListing.find(params[:id])
+    @event_registration = @event_listing.event_registrations.find_by(user_id: current_user&.id)
   end
   def create
     @event_listing = current_user.event_listings.build(event_listing_params)

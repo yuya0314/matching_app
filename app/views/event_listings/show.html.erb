@@ -3,9 +3,14 @@
   <main>
     <div class="row py-5 justify-content-center">
       <div class="col-lg-8">
-        <div class="d-flex justify-content-end">
-          <p><%=link_to "投稿編集",[:edit, @event_listing.event, @event_listing],class:"eventlisting-edit-btn" %></p>
-          <p><%=link_to "投稿削除",[@event_listing.event, @event_listing],method: :delete,data: { confirm: '削除してもよろしいですか？'},class: "eventlisting-edit-btn" %></p>
+          <div class="d-flex justify-content-between">
+            <%= link_to "ホームへ戻る",root_path,class: "eventlisting-edit-btn" %>
+            <% if current_user == @event_listing.user %>
+            <div>
+              <%=link_to "投稿編集",[:edit, @event_listing.event, @event_listing],class: "eventlisting-edit-btn" %>
+              <%=link_to "投稿削除",[@event_listing.event, @event_listing],method: :delete,data: { confirm: '削除してもよろしいですか？'},class: "eventlisting-edit-btn" %>
+            </div>   
+        <% end %>
         </div>
         <hr class="my-2">
         <div class="row justify-content-center">
@@ -42,14 +47,18 @@
               <h6><%= "参加メンバー(募集人数#{@event_listing.capacity}人)" %></h6>
               <% @event_listing.event_registrations.each do |event_registration| %>
                 <% if event_registration.user.present? %>
-                  <%= image_tag event_registration.user.profile_image.url, class: "card-image rounded-circle" %>
-                  <%= link_to event_registration.user.name, event_registration.user,class:"user-name" %>
-                  <%= event_registration.comment %>
+                  <div class="my-3">
+                    <%= image_tag event_registration.user.profile_image.url, class: "card-image rounded-circle" %>
+                    <%= link_to event_registration.user.name, event_registration.user,class:"user-name" %>
+                    <%= event_registration.comment %>
+                  </div>
                 <% end %>
               <% end %>
               <hr class="my-2">
-              <% if current_user &&(current_user == @event_listing.user || @event_listing.event_registrations.any? { |r| r.user == current_user }) %>
+              <% if current_user && current_user == @event_listing.user %>
                 <%= f.submit "参加済", class: "w-100 btn btn-primary btn-lg",disabled: true %>
+              <% elsif current_user && @event_listing.event_registrations.any? { |r| r.user == current_user } %>
+                <%= link_to "参加をキャンセル",event_registration_path(@event_registration),method: :delete,data: { confirm: 'キャンセルしてもよろしいですか' }, class: "w-100 btn btn-primary btn-lg" %>
               <% elsif @event_listing.capacity-@event_listing.event_registrations.count == 0 || Date.today > @event_listing.deadline  %>
                 <%= f.submit "募集締切", class: "w-100 btn btn-primary btn-lg",disabled: true %>
               <% else %>
