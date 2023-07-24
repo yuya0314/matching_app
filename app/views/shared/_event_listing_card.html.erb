@@ -7,8 +7,11 @@
     </h5>
     <div class="card-body">
       <h5 class="card-title"><%= event_listing.title %></h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <% if event_listing.capacity-event_listing.event_registrations.count == 0 %>
+      <p class="card-text">
+        <%= image_tag event_listing.user.profile_image.url, class: "card-image rounded-circle" %>
+        <%= link_to event_listing.user.name, event_listing.user,class:"user-name" %>
+      </p>
+      <% if event_listing.capacity-event_listing.event_registrations.count == 0 || event_listing.deadline < Date.today %>
       <%= link_to "募集終了",[event_listing.event,event_listing],class:"btn btn-primary" %>
       <% else %>
       <%= link_to "残り#{event_listing.capacity-event_listing.event_registrations.count}人 募集中",[event_listing.event,event_listing],class:"btn btn-primary" %>

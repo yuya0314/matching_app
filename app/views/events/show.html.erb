@@ -1,7 +1,9 @@
+<% provide(:title,"イベント投稿")%>
 <div class="container eventlisting">
   <main>
     <div class="row py-5 justify-content-center">
       <div class="col-md-6 col-lg-8">
+        <%= render 'shared/error_messages', object: @event_listing %>
         <ul class="list-group list-group-light">
           <li class="list-group-item">
             <div class="fw-bold"><%= @event.match %></div>

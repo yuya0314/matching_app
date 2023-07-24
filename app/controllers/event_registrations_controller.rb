@@ -6,7 +6,7 @@ class EventRegistrationsController < ApplicationController
     if @event_registration.save
       redirect_to [@event_listing.event,@event_listing]
     else
-      flash[:error] = '参加コメントを入力してください'
+      flash.now[:error] = '参加コメントを入力してください'
       render 'event_listings/show'
     end
   end

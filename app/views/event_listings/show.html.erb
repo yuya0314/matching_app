@@ -55,9 +55,9 @@
                 <% end %>
               <% end %>
               <hr class="my-2">
-              <% if current_user && current_user == @event_listing.user %>
+              <% if  current_user == @event_listing.user %>
                 <%= f.submit "参加済", class: "w-100 btn btn-primary btn-lg",disabled: true %>
-              <% elsif current_user && @event_listing.event_registrations.any? { |r| r.user == current_user } %>
+              <% elsif current_user.present? && @event_listing.event_registrations.any? { |r| r.user == current_user } %>
                 <%= link_to "参加をキャンセル",event_registration_path(@event_registration),method: :delete,data: { confirm: 'キャンセルしてもよろしいですか' }, class: "w-100 btn btn-primary btn-lg" %>
               <% elsif @event_listing.capacity-@event_listing.event_registrations.count == 0 || Date.today > @event_listing.deadline  %>
                 <%= f.submit "募集締切", class: "w-100 btn btn-primary btn-lg",disabled: true %>

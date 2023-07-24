@@ -11,7 +11,6 @@ class EventListingsController < ApplicationController
     if @event_listing.save
       redirect_to [@event,@event_listing]
     else
-      flash[:error] = '入力内容を確認してください'
       render 'events/show'
     end
   end
