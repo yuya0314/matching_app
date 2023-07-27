@@ -1,41 +1,69 @@
+<% provide(:title,'募集詳細') %>
 <div class="container">
   <main>
     <div class="row py-5 justify-content-center">
-      <div class="col-md-6 col-lg-8">
-        <div class="row">
-          <div class="col-lg-6"> 
+      <div class="col-lg-8">
+          <div class="d-flex justify-content-between">
+            <%= link_to "ホームへ戻る",root_path,class: "eventlisting-edit-btn" %>
+            <% if current_user == @event_listing.user %>
+            <div>
+              <%=link_to "投稿編集",[:edit, @event_listing.event, @event_listing],class: "eventlisting-edit-btn" %>
+              <%=link_to "投稿削除",[@event_listing.event, @event_listing],method: :delete,data: { confirm: '削除してもよろしいですか？'},class: "eventlisting-edit-btn" %>
+            </div>   
+        <% end %>
+        </div>
+        <hr class="my-2">
+        <div class="row justify-content-center">
+          <div class="col-lg-9"> 
             <div class="card border border-info shadow-0 mb-3">
-              <div class="card-header">
-                <span><%= @event_listing.event.date.strftime("%m/%d") %></span>
-                <span><%= @event_listing.event.start_time.strftime("%H:%M") %>~</span>
-                <span><%= "#{@event_listing.event.match}  (#{@event_listing.event.location})" %></span>
+              <div class="card-header d-flex justify-content-between">
+                <span>
+                <%= "#{@event_listing.event.date.strftime("%m/%d")}  #{@event_listing.event.start_time.strftime("%H:%M")}〜" %>
+                </span>
+                <span>
+                <%= "#{@event_listing.event.match}  (#{@event_listing.event.location})" %>
+                </span>
               </div>
               <div class="card-body">
                 <div class="card-title">
-                  <%= image_tag @event_listing.user.profile_image.url, style: "width: 45px; height: 45px", class: "rounded-circle" %>
-                  <%= link_to @event_listing.user.name, @event_listing.user %>
+                  <%= image_tag @event_listing.user.profile_image.url, class: "card-image rounded-circle" %>
+                  <%= link_to @event_listing.user.name, @event_listing.user,class:"user-name" %>
                 </div>
                 <h5 class="card-title"> <%= @event_listing.title %></h5>
                 <p class="card-text"> <%= @event_listing.message %></p>
               </div>
-              <div class="card-footer">チケット有<span><%= @event_listing.deadline %></span></div>
+              <div class="card-footer d-flex justify-content-between">
+              <span><%= @event_listing.has_ticket ? "チケット有" : "チケット無" %></span>
+              <span><%= "締切  #{@event_listing.deadline.strftime("%m/%d")}" %></span>
+              </div>
             </div>
           </div>
-          <div class="col-lg-6">
-            <%= form_with(model: @event_listing.event_registrations.build, local: true) do |f| %>
+          <div class="col-lg-9">
+            <%= form_with(model: EventRegistration.new, local: true) do |f| %>
               <%= f.hidden_field :event_listing_id, value: @event_listing.id %>
               <%= f.label :comment, "参加コメント", class: "form-label" %>
               <%= f.text_field :comment, class: "form-control" %>
               <hr class="my-2">
-              <h6>参加メンバー</h6>
-              <% @event_listing.event_registrations.each do |event_registration| %>
+              <h6><%= "参加メンバー(募集人数#{@event_listing.capacity}人)" %></h6>
+              <% @event_registrations.each do |event_registration| %>
                 <% if event_registration.user.present? %>
-                  <%= image_tag event_registration.user.profile_image.url, style: "width: 45px; height: 45px", class: "rounded-circle" %>
-                  <%= link_to event_registration.user.name, event_registration.user %>
+                  <div class="my-3">
+                    <%= image_tag event_registration.user.profile_image.url, class: "card-image rounded-circle" %>
+                    <%= link_to event_registration.user.name, event_registration.user,class:"user-name" %>
+                    <%= event_registration.comment %>
+                  </div>
                 <% end %>
               <% end %>
-              <hr class="my-2">          
-              <%= f.submit "参加する", class: "w-100 btn btn-primary btn-lg" %>
+              <hr class="my-2">
+              <% if  current_user == @event_listing.user %>
+                <%= f.submit "参加済", class: "w-100 btn btn-primary btn-lg",disabled: true %>
+              <% elsif current_user.present? && @event_registrations.any? { |r| r.user == current_user } %>
+                <%= link_to "参加をキャンセル",event_registration_path(@event_registration),method: :delete,data: { confirm: 'キャンセルしてもよろしいですか' }, class: "w-100 btn btn-primary btn-lg" %>
+              <% elsif @event_listing.capacity-@event_registrations.count == 0 || Date.today > @event_listing.deadline  %>
+                <%= f.submit "募集締切", class: "w-100 btn btn-primary btn-lg",disabled: true %>
+              <% else %>
+                <%= f.submit "参加する", class: "w-100 btn btn-primary btn-lg" %>
+              <% end %>
             <% end %>
           </div>
         </div>

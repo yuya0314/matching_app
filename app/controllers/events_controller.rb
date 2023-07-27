@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :show]
   def index
-    @events = Event.all
+    @events = Event.merge(Event.upcoming)
   end
   def show
     @event = Event.find(params[:id])

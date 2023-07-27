@@ -1,14 +1,11 @@
-<%= render "devise/shared/error_messages", resource: resource %>
+<% provide(:title,'ユーザー編集')%>
 <div class="container emp-profile">
+  <%= render "devise/shared/error_messages", resource: resource %>
   <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), local: true, method: :patch, class: "px-3" do |f| %>
     <div class="row">
       <div class="col-md-4">
         <div class="profile-img">
-          <% if @user.profile_image.url.nil? %>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-          <% else %>
-            <%= image_tag @user.profile_image.url %>
-          <% end %>
+          <%= image_tag @user.profile_image.url %>
           <%= f.file_field :profile_image %> 
         </div>
       </div>

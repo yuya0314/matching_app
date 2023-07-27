@@ -1,0 +1,25 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-header">
+      <%= event_listing.event.date.strftime("%m/%d") %>  
+      <%= event_listing.event.start_time.strftime("%H:%M") %>~
+      <%= event_listing.event.location %>
+    </h5>
+    <div class="card-body">
+      <h5 class="card-title py-3"><%= event_listing.title %></h5>
+      <div class="card-text d-flex justify-content-between">
+      <span>
+        <%= image_tag event_listing.user.profile_image.url, class: "card-image rounded-circle" %>
+        <%= link_to event_listing.user.name, event_listing.user,class:"user-name" %>
+      </span>
+      <span>
+      <% if event_listing.capacity-event_listing.event_registrations.count == 0 || event_listing.deadline < Date.today %>
+      <%= link_to "募集終了",[event_listing.event,event_listing],class:"btn btn-primary" %>
+      <% else %>
+      <%= link_to "残り#{event_listing.capacity-event_listing.event_registrations.count}人 募集中",[event_listing.event,event_listing],class:"btn btn-primary" %>
+      <% end %>
+      </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    models:
+      event_listing: 募集詳細
+      event_registration: 募集登録
+      event: イベント
+      user: ユーザー
+    attributes:
+      event_listing:
+        title: 募集タイトル
+        message: メッセージ
+        deadline: 募集締切
+        capacity: 募集人数(自身除く)
+        has_ticket: チケットの有無
+      event_registration:
+        event_listing_id: 募集詳細ID
+        comment: コメント
+      event:
+        date: 日付
+        match: マッチ
+        start_time: 開始時間
+        location: 場所
+      user:
+        name: 名前
+        self_introduction: 自己紹介
+        fan_years: ファン歴
+        favorite_player: 好きな選手
+        profile_image: プロフィール画像
