@@ -1,9 +1,16 @@
+<% provide(:title, '検索結果') %>
 <div class="container d-flex justify-content-center">
-    <div class="row col-md-8 custyle">
+  <div class="row col-md-8 custyle py-5">
+    <%= link_to "ホームへ戻る", root_path, class: "eventlisting-edit-btn" %>
+    <hr class="my-3">
+    <% if @results.blank? %>
+      <h4 class="text-center py-5">該当する検索結果がありませんでした</h4>
+    <% else %>
       <% @results.each do |event| %>
         <% event.event_listings.each do |event_listing| %>
           <%= render 'shared/event_listing_card', event_listing: event_listing %>
         <% end %>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 </div>

@@ -10,7 +10,7 @@
           </li>
         </ul>
         <hr class="my-4">
-        <h5 class="mb-3 fw-bold info">募集詳細を投稿</h5>
+        <h5 class="mb-3 fw-bold info">イベントを投稿</h5>
         <%= form_with(model: [@event, @event_listing], local: true) do |f| %>
           <%= f.hidden_field :event_id, value: @event.id %>
           <div class="row gy-3">

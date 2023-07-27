@@ -39,13 +39,13 @@
             </div>
           </div>
           <div class="col-lg-9">
-            <%= form_with(model: @event_listing.event_registrations.build, local: true) do |f| %>
+            <%= form_with(model: EventRegistration.new, local: true) do |f| %>
               <%= f.hidden_field :event_listing_id, value: @event_listing.id %>
               <%= f.label :comment, "参加コメント", class: "form-label" %>
               <%= f.text_field :comment, class: "form-control" %>
               <hr class="my-2">
               <h6><%= "参加メンバー(募集人数#{@event_listing.capacity}人)" %></h6>
-              <% @event_listing.event_registrations.each do |event_registration| %>
+              <% @event_registrations.each do |event_registration| %>
                 <% if event_registration.user.present? %>
                   <div class="my-3">
                     <%= image_tag event_registration.user.profile_image.url, class: "card-image rounded-circle" %>
@@ -57,9 +57,9 @@
               <hr class="my-2">
               <% if  current_user == @event_listing.user %>
                 <%= f.submit "参加済", class: "w-100 btn btn-primary btn-lg",disabled: true %>
-              <% elsif current_user.present? && @event_listing.event_registrations.any? { |r| r.user == current_user } %>
+              <% elsif current_user.present? && @event_registrations.any? { |r| r.user == current_user } %>
                 <%= link_to "参加をキャンセル",event_registration_path(@event_registration),method: :delete,data: { confirm: 'キャンセルしてもよろしいですか' }, class: "w-100 btn btn-primary btn-lg" %>
-              <% elsif @event_listing.capacity-@event_listing.event_registrations.count == 0 || Date.today > @event_listing.deadline  %>
+              <% elsif @event_listing.capacity-@event_registrations.count == 0 || Date.today > @event_listing.deadline  %>
                 <%= f.submit "募集締切", class: "w-100 btn btn-primary btn-lg",disabled: true %>
               <% else %>
                 <%= f.submit "参加する", class: "w-100 btn btn-primary btn-lg" %>
