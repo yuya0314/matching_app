@@ -3,6 +3,7 @@ class EventListingsController < ApplicationController
   before_action :set_event_listing, only: [:edit, :update, :destroy]
   before_action :set_event_listing_associations, only: [:show]
   before_action :set_event, only: [:create, :edit, :update]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def show
     @event_registration = @event_listing.event_registrations.find_by(user_id: current_user&.id)
@@ -53,5 +54,12 @@ class EventListingsController < ApplicationController
   
   def set_event
     @event = Event.find(params[:event_id]) 
+  end
+
+  def correct_user
+    unless current_user == @event_listing.user
+      flash[:error] = "投稿者のみ実行できます。"
+      redirect_to root_path
+    end
   end
 end
