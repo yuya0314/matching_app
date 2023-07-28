@@ -1,7 +1,7 @@
 class EventListingsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
   before_action :set_event_listing, only: [:edit, :update, :destroy]
-  before_action :set_event_listing_associations, only: [:show]
+  before_action :set_event_listing_associations, only: :show
   before_action :set_event, only: [:create, :edit, :update]
   before_action :correct_user, only: [:edit, :update, :destroy]
 

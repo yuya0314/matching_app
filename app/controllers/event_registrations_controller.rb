@@ -1,7 +1,7 @@
 class EventRegistrationsController < ApplicationController
   before_action :authenticate_user!,only: [:create, :destroy]
-  before_action :set_event_registration, only: [:destroy]
-  before_action :correct_user, only: [:destroy]
+  before_action :set_event_registration, only: :destroy
+  before_action :correct_user, only: :destroy
 
   def create
     @event_registration = current_user.event_registrations.build(event_registrations_params)
