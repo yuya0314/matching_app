@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :event_registrations
   has_many :chat_room_users
   has_many :chat_rooms, through: :chat_room_users
+  has_many :chat_messages
   mount_uploader :profile_image, ProfileImageUploader
   validates :name, presence: true
   validates :self_introduction, length: { maximum: 500 }
