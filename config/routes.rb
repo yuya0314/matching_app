@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :admin_users
-  devise_for :users,
+  devise_for :users, controllers: { sessions: 'users/sessions' },
     controllers: { registrations: 'registrations' } 
   root 'top#index'
   resources :users, only: [:show]
