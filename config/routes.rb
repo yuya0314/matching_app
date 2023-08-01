@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     resources :event_listings, only: [:show, :create, :edit, :update, :destroy]
   end
   resources :event_registrations, only: [:create, :destroy]
+  resources :chat_rooms, only: [:create, :show]
 end
