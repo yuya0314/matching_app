@@ -1,13 +1,19 @@
 <% provide(:title,'ユーザー詳細') %>
 <div class="container emp-profile">
-  <% if @user == current_user %>
-  <div class="row justify-content-end">
-    <div class="col-md-2">
-      <%= link_to "ユーザー編集", edit_user_registration_path, class: "profile-edit-btn" %>
+  
+    <div class="row justify-content-end">
+      <% if @user == current_user %>
+      <div class="col-md-2">
+        <%= link_to "ユーザー編集", edit_user_registration_path, class: "profile-edit-btn" %>
+      </div>
+  <% else %>
+      <div class="col-md-2">
+        <%= link_to "DM", chat_rooms_path(params: { user_id: @user.id }), method: :post, class: "profile-edit-btn" %>
+      </div>
+      <% end %>
     </div>
-  </div>
+  
   <hr class="mb-4">
-  <% end %>
   <div class="row justify-content-center">
     <div class="col-md-4">
       <div class="profile-img">
