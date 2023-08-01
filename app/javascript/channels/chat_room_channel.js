@@ -1,5 +1,7 @@
 import consumer from "./consumer"
 
+let enterCount = 0;
+
 const appChatRoom = consumer.subscriptions.create("ChatRoomChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
@@ -22,10 +24,17 @@ const appChatRoom = consumer.subscriptions.create("ChatRoomChannel", {
 if(/chat_rooms/.test(location.pathname)) {
   $(document).on("keydown", ".chat-room__message-form_textarea", function(e) {
     if (e.key === "Enter") {
-      const chat_room_id = $('textarea').data('chat_room_id')
-      appChatRoom.speak(e.target.value, chat_room_id);
-      e.target.value = '';
       e.preventDefault();
+      enterCount++;
+
+      if (enterCount === 2) {
+        const chat_room_id = $('textarea').data('chat_room_id');
+        appChatRoom.speak(e.target.value, chat_room_id);
+        e.target.value = '';
+        enterCount = 0;
+      }
+    } else {
+      enterCount = 0;
     }
-  })
+  });
 }
