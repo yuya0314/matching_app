@@ -16,7 +16,7 @@
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
             </ul>
           </li>
-          <li class="nav-item"><%= link_to "あ募集投稿", events_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "募集投稿", events_path, class: "nav-link" %></li>
         <% else %>
           <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light me-3" %></li>
           <li class="nav-item"><%= link_to "簡単登録", new_user_registration_path, class: "btn btn-outline-light me-3" %></li>
