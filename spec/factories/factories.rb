@@ -17,7 +17,7 @@ FactoryBot.define do
     favorite_player { '高橋周平' }
   end
 
-   factory :third_user, class: User do
+   factory :not_registered_user, class: User do
     name { '鈴木三郎' }
     email {  "saburo@example.com" }
     password { 'password' }
@@ -25,6 +25,7 @@ FactoryBot.define do
     fan_years { 20 }
     favorite_player { '山本昌' }
   end
+
   factory :event do
     date { Date.today + 14.days}
     match { '巨人' }
