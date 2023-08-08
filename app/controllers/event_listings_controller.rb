@@ -13,6 +13,7 @@ class EventListingsController < ApplicationController
   def create
     @event_listing = current_user.event_listings.build(event_listing_params)
     if @event_listing.save
+      flash[:success] = 'イベントを作成しました'
       redirect_to [@event, @event_listing]
     else
       render 'events/show'

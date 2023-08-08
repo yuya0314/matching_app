@@ -48,7 +48,7 @@ RSpec.describe Event, type: :model do
     let!(:event_future) { FactoryBot.create(:event, date: Date.today + 5.days) }
     let!(:event_past) { FactoryBot.create(:event, date: Date.today - 5.days) }
   
-    it 'returns events that are today or in the future' do
+    it '今日より過去のイベントは取得されないこと' do
       expect(Event.upcoming).to include(event_today, event_future)
       expect(Event.upcoming).not_to include(event_past)
     end

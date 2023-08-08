@@ -7,7 +7,7 @@ class EventRegistrationsController < ApplicationController
     @event_registration = current_user.event_registrations.build(event_registrations_params)
     @event_listing = EventListing.find(params[:event_registration][:event_listing_id])
     if @event_registration.save
-      flash[:error] = 'このイベントに参加しました'
+      flash[:success] = 'このイベントに参加しました'
       redirect_to [@event_listing.event, @event_listing]
     else
       flash[:error] = '参加コメントを入力してください'
