@@ -79,6 +79,10 @@ RSpec.describe "EventListings", type: :request do
         expect(response.body).to include '投稿削除'
       end
 
+      it '投稿削除ができること' do
+        expect {delete event_event_listing_path(event, event_listing)}.to change(EventListing, :count).by(-1)        
+      end
+
       it "参加ボタンが'参加済'と表示されること" do
         expect(response.body).to include '参加済'
       end

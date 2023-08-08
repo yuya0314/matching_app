@@ -49,7 +49,9 @@ RSpec.describe 'EventListings', type: :system do
       let!(:user) { FactoryBot.create(:user) }
       let(:event) { FactoryBot.create(:event) }
       let(:event_listing) { FactoryBot.create(:event_listing, user: user, event: event) }
-  
+      let(:second_user) { FactoryBot.create(:second_user) }
+      let!(:event_registration) { FactoryBot.create(:event_registration, user: second_user, event_listing: event_listing) }
+
       include_context 'logged in user'
     
       before do
@@ -74,6 +76,7 @@ RSpec.describe 'EventListings', type: :system do
         click_on '投稿削除'  
         expect(page).to have_content '投稿を削除しました'
         expect(EventListing.exists?(event_listing.id)).to be_falsey
+        expect(EventRegistration.exists?(event_registration.id)).to be_falsey
       end
     end
   end
@@ -88,7 +91,7 @@ RSpec.describe 'EventListings', type: :system do
     before do
     visit edit_event_event_listing_path(event,event_listing)
     end
-    
+
     it "編集できること" do
     fill_in 'event_listing[capacity]', with: '4'
     choose "無"
