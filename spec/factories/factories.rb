@@ -43,6 +43,16 @@ FactoryBot.define do
     has_ticket { true }
   end
 
+  factory :second_event_listing, class: EventListing do
+    association :user
+    association :event
+    title { '中日大好きな人と観戦したいです！' }
+    message { '仕事終わりに観に行きます！遅れたらごめんなさい。' }
+    deadline { Date.today + 11.days }
+    capacity { 2 }
+    has_ticket { false }
+  end
+
   factory :event_registration do
     association :user
     association :event_listing

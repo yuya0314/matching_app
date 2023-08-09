@@ -78,7 +78,7 @@ RSpec.describe "EventListings", type: :request do
       it "投稿削除リンクが表示されること" do
         expect(response.body).to include '投稿削除'
       end
-
+      
       it '投稿削除ができること' do
         expect {delete event_event_listing_path(event, event_listing)}.to change(EventListing, :count).by(-1)        
       end
