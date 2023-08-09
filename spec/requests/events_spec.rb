@@ -56,7 +56,7 @@ RSpec.describe "Events", type: :request do
     let!(:event) { FactoryBot.create(:event) }
 
     context "ログインしていない場合" do
-      it "イベント一覧が取得できないこと" do
+      it "投稿ページが取得できないこと" do
         get event_path(event)
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to(new_user_session_path)
