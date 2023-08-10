@@ -92,7 +92,7 @@ RSpec.describe "Users", type: :request do
       end
     end
 
-    context "本人がログインしユーザー詳細ページにアクセスした場合" do
+    context "本人がログインし他のユーザー詳細ページにアクセスした場合" do
       before do
         sign_in user
         get user_path(second_user.id)

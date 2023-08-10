@@ -93,17 +93,17 @@ RSpec.describe 'EventListings', type: :system do
     end
 
     it "編集できること" do
-    fill_in 'event_listing[capacity]', with: '4'
-    choose "無"
-    fill_in 'event_listing[deadline]', with: Date.today + 10.days
-    fill_in 'event_listing[title]', with: '気軽にご参加ください！'
-    fill_in 'event_listing[message]', with: '最近ファンになりました！パリーグはオリックスを応援しています'
-    click_button '投稿する'
-    expect(page).to have_content '投稿内容を更新しました。'
-    expect(page).to have_content '気軽にご参加ください'
-    expect(page).to have_content 'チケット無'
-    expect(page).to have_content '最近ファンになりました！パリーグはオリックスを応援しています'
-    expect(page).to have_content '募集人数4人'
+      fill_in 'event_listing[capacity]', with: '4'
+      choose "無"
+      fill_in 'event_listing[deadline]', with: Date.today + 10.days
+      fill_in 'event_listing[title]', with: '気軽にご参加ください！'
+      fill_in 'event_listing[message]', with: '最近ファンになりました！パリーグはオリックスを応援しています'
+      click_button '投稿する'
+      expect(page).to have_content '投稿内容を更新しました。'
+      expect(page).to have_content '気軽にご参加ください'
+      expect(page).to have_content 'チケット無'
+      expect(page).to have_content '最近ファンになりました！パリーグはオリックスを応援しています'
+      expect(page).to have_content '募集人数4人'
     end
   end
 end

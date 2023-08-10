@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Event', type: :system do
+RSpec.describe 'Events', type: :system do
   describe 'イベント一覧ページの動作' do
     let(:user) { FactoryBot.create(:user) }
     let!(:event) { FactoryBot.create(:event) }

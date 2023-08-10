@@ -58,4 +58,27 @@ FactoryBot.define do
     association :event_listing
     comment { 'チケットは私がまとめて購入します' }
   end
+
+  factory :chat_room do
+    after(:create) do |chat_room, evaluator|
+      create(:chat_room_user, chat_room: chat_room, user: evaluator.user)
+      create(:chat_room_user, chat_room: chat_room, user: evaluator.second_user)
+    end
+
+    transient do
+      user { nil }
+      second_user { nil }
+    end
+  end
+
+  factory :chat_room_user do
+    association :chat_room
+    association :user
+  end
+
+  factory :chat_message do
+    content { "Hello!" }
+    chat_room
+    user
+  end
 end
