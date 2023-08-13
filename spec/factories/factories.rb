@@ -32,6 +32,13 @@ FactoryBot.define do
     start_time { Time.current.change(hour: 18, min: 0) }
     location { 'バンテリンドーム' }
   end
+  
+  factory :second_event, class: Event do
+    date { Date.today + 13.days}
+    match { '広島' }
+    start_time { Time.current.change(hour: 14, min: 0) }
+    location { 'マツダスタジアム' }
+  end
 
   factory :event_listing do
     association :user
