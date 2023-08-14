@@ -1,5 +1,6 @@
 class ChatRoomsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:show, :create]
+  before_action :ensure_user_can_access_chat_room, only: [:show]
 
   def show
     @chat_room = ChatRoom.find(params[:id])
@@ -17,5 +18,15 @@ class ChatRoomsController < ApplicationController
       ChatRoomUser.create(chat_room: chat_room, user_id: params[:user_id])
     end
     redirect_to action: :show, id: chat_room.id
+  end
+
+  private
+
+  def ensure_user_can_access_chat_room
+    @chat_room = ChatRoom.find(params[:id])
+    unless @chat_room.chat_room_users.map(&:user).include?(current_user)
+      flash[:error] = '参照権限がありません。'
+      redirect_to root_path
+    end
   end
 end

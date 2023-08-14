@@ -114,7 +114,7 @@ RSpec.describe "Users", type: :request do
 
   describe "GET /edit" do
     let(:user) { FactoryBot.create(:user) }
-      
+
     before do
       sign_in user
       get "/users/edit"
@@ -123,7 +123,7 @@ RSpec.describe "Users", type: :request do
     it "ユーザー編集ページにアクセスできること" do
       expect(response).to have_http_status(200)
     end
-    
+
     it "ユーザー名が取得されること" do
       expect(response.body).to include user.name
     end

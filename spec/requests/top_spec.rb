@@ -11,7 +11,7 @@ RSpec.describe "Top", type: :request do
         end
       end
     end
-    
+
     context "ページネーションの1ページ目" do
       before do
         get root_path
@@ -24,7 +24,7 @@ RSpec.describe "Top", type: :request do
       it "イベント日が取得されること" do
         expect(response.body).to include event.date.strftime("%m/%d")
       end
-    
+
       it "イベント開始時間が取得されること" do
         expect(response.body).to include event.start_time.strftime("%H:%M")
       end
@@ -40,7 +40,7 @@ RSpec.describe "Top", type: :request do
       it "イベントタイトルが取得されること" do
         expect(response.body).to include event_listings.first.title
       end
-    
+
       it "募集中が取得されること" do
         expect(response.body).to include "募集中"
       end
@@ -92,4 +92,4 @@ RSpec.describe "Top", type: :request do
       end
     end
   end
-end 
+end

@@ -37,7 +37,7 @@ RSpec.describe 'Top', type: :system do
     end
 
     it "ユーザー名をクリックし、ユーザー詳細ページへ遷移すること" do
-      all_links = all('a', text: user.name )
+      all_links = all('a', text: user.name)
       all_links.each_with_index do |link, index|
         link.click
         expect(current_path).to eq user_path(user)
@@ -76,7 +76,7 @@ RSpec.describe 'Top', type: :system do
       select "巨人", from: "対戦チーム"
       select "バンテリンドーム", from: "野球場"
       fill_in "q[date_gteq]", with: Date.today.strftime("%Y-%m-%d")
-      fill_in "q[date_lteq]", with: (Date.today + 15.days).strftime("%Y-%m-%d") 
+      fill_in "q[date_lteq]", with: (Date.today + 15.days).strftime("%Y-%m-%d")
       click_button "検索"
       expect(page).to have_content event_listings[8].title
       expect(page).not_to have_content second_event_listing.title
@@ -86,7 +86,7 @@ RSpec.describe 'Top', type: :system do
       select "広島", from: "q[match_eq]"
       select "マツダスタジアム", from: "q[location_eq]"
       fill_in "q[date_gteq]", with: Date.today.strftime("%Y-%m-%d")
-      fill_in "q[date_lteq]", with: (Date.today + 13.days).strftime("%Y-%m-%d") 
+      fill_in "q[date_lteq]", with: (Date.today + 13.days).strftime("%Y-%m-%d")
       click_button "検索"
       expect(page).to have_content second_event_listing.title
       expect(page).not_to have_content event_listings[0].title

@@ -11,7 +11,7 @@ RSpec.describe "EventListings", type: :request do
 
     context "ログインしていない場合" do
       before do
-        get event_event_listing_path(event,event_listing)
+        get event_event_listing_path(event, event_listing)
       end
 
       it "募集詳細ページを取得されること"  do
@@ -68,7 +68,7 @@ RSpec.describe "EventListings", type: :request do
     context "イベント投稿者がログインした場合" do
       before do
         sign_in user
-        get event_event_listing_path(event,event_listing)
+        get event_event_listing_path(event, event_listing)
       end
 
       it "投稿編集リンクが表示されること" do
@@ -78,9 +78,9 @@ RSpec.describe "EventListings", type: :request do
       it "投稿削除リンクが表示されること" do
         expect(response.body).to include '投稿削除'
       end
-      
+
       it '投稿削除ができること' do
-        expect {delete event_event_listing_path(event, event_listing)}.to change(EventListing, :count).by(-1)        
+        expect { delete event_event_listing_path(event, event_listing) }.to change(EventListing, :count).by(-1)
       end
 
       it "参加ボタンが'参加済'と表示されること" do
@@ -91,7 +91,7 @@ RSpec.describe "EventListings", type: :request do
     context "イベント参加者がログインした場合" do
       before do
         sign_in second_user
-        get event_event_listing_path(event,event_listing)
+        get event_event_listing_path(event, event_listing)
       end
 
       it "参加ボタンが'参加をキャンセル'と表示されること" do
@@ -102,7 +102,7 @@ RSpec.describe "EventListings", type: :request do
     context "イベントに参加していないユーザーがログインした場合" do
       before do
         sign_in not_registered_user
-        get event_event_listing_path(event,event_listing)
+        get event_event_listing_path(event, event_listing)
       end
 
       it "参加ボタンが'参加する'と表示されること" do
@@ -110,7 +110,9 @@ RSpec.describe "EventListings", type: :request do
       end
 
       it "参加できること" do
-        post "/event_registrations", params: { event_registration: {event_listing_id: event_listing.id,comment: "チケットは私が用意します"} }
+        post "/event_registrations", params: {
+          event_registration: { event_listing_id: event_listing.id, comment: "チケットは私が用意します" },
+        }
         follow_redirect!
         expect(response.body).to include "このイベントに参加しました"
       end
@@ -122,12 +124,12 @@ RSpec.describe "EventListings", type: :request do
     let(:event) { FactoryBot.create(:event) }
     let(:event_listing) { FactoryBot.create(:event_listing, user: user, event: event) }
     let(:second_user) { FactoryBot.create(:second_user) }
-    
+
     context "投稿者以外はアクセスできないこと" do
       it "投稿者でないユーザーはアクセスできないこと" do
         sign_in second_user
         get edit_event_event_listing_path(event, event_listing)
-        expect(response).to have_http_status(:redirect) 
+        expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to(root_path)
         follow_redirect!
         expect(response.body).to include "投稿者のみ実行できます。"
@@ -135,7 +137,7 @@ RSpec.describe "EventListings", type: :request do
 
       it "ログインしていないユーザーはアクセスできないこと" do
         get edit_event_event_listing_path(event, event_listing)
-        expect(response).to have_http_status(:redirect) 
+        expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -180,7 +182,7 @@ RSpec.describe "EventListings", type: :request do
 
       it "編集できること" do
         expect(response.body).to include "男女問わず参加してください！"
-        patch event_event_listing_path(event, event_listing), params: { event_listing: {title: "気軽にご参加ください！"} }
+        patch event_event_listing_path(event, event_listing), params: { event_listing: { title: "気軽にご参加ください！" } }
         follow_redirect!
         expect(response.body).to include "投稿内容を更新しました。"
         expect(response.body).to include "気軽にご参加ください！"

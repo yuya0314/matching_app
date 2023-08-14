@@ -98,7 +98,9 @@ RSpec.describe "Events", type: :request do
       end
 
       it "イベント投稿できること" do
-        post event_event_listings_path(event), params: { event_listing: FactoryBot.attributes_for(:event_listing,event_id: event.id) }
+        post event_event_listings_path(event), params: {
+          event_listing: FactoryBot.attributes_for(:event_listing, event_id: event.id),
+        }
         follow_redirect!
         expect(response.body).to include 'イベントを作成しました'
       end

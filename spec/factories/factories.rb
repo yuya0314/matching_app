@@ -5,10 +5,10 @@ FactoryBot.define do
     password { 'password' }
     self_introduction { 'よろしくお願いします！' }
     fan_years { 5 }
-    favorite_player {'大島洋平'}
+    favorite_player { '大島洋平' }
   end
 
-  factory :second_user, class: User do
+  factory :second_user, class: "User" do
     name { '佐藤次郎' }
     email {  "jirosato@example.com" }
     password { 'password' }
@@ -17,7 +17,7 @@ FactoryBot.define do
     favorite_player { '高橋周平' }
   end
 
-   factory :not_registered_user, class: User do
+  factory :not_registered_user, class: "User" do
     name { '鈴木三郎' }
     email {  "saburo@example.com" }
     password { 'password' }
@@ -27,14 +27,14 @@ FactoryBot.define do
   end
 
   factory :event do
-    date { Date.today + 14.days}
+    date { Date.today + 14.days }
     match { '巨人' }
     start_time { Time.current.change(hour: 18, min: 0) }
     location { 'バンテリンドーム' }
   end
-  
-  factory :second_event, class: Event do
-    date { Date.today + 13.days}
+
+  factory :second_event, class: "Event" do
+    date { Date.today + 13.days }
     match { '広島' }
     start_time { Time.current.change(hour: 14, min: 0) }
     location { 'マツダスタジアム' }
@@ -50,7 +50,7 @@ FactoryBot.define do
     has_ticket { true }
   end
 
-  factory :second_event_listing, class: EventListing do
+  factory :second_event_listing, class: "EventListing" do
     association :user
     association :event
     title { '中日大好きな人と観戦したいです！' }
@@ -84,8 +84,14 @@ FactoryBot.define do
   end
 
   factory :chat_message do
-    content { "Hello!" }
-    chat_room
-    user
+    association :chat_room
+    association :user
+    content { 'チケット私が買ってもいいですか？' }
+  end
+
+  factory :chat_second_message, class: "ChatMessage" do
+    association :chat_room
+    association :user
+    content { 'すみません、よろしくお願いします。外野がいいです。' }
   end
 end

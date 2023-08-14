@@ -9,12 +9,12 @@ RSpec.describe 'Users', type: :system do
     let!(:chat_room) { FactoryBot.create(:chat_room, user: user, second_user: second_user) }
 
     include_context 'logged in user'
-  
+
     context "本人がログインしユーザー詳細ページにアクセスした場合" do
       before do
         visit user_path(user)
       end
-  
+
       it "ユーザー編集リンクをクリックし、投稿ページへ遷移すること" do
         click_link 'ユーザー編集'
         expect(current_path).to eq edit_user_registration_path
@@ -24,7 +24,7 @@ RSpec.describe 'Users', type: :system do
         click_link event_listing.user.name
         expect(current_path).to eq user_path(user)
       end
-  
+
       it "募集をクリックし、イベント詳細ページへ遷移すること" do
         all_links = all('a', text: '募集中')
         all_links.each_with_index do |link, index|
@@ -120,7 +120,7 @@ RSpec.describe 'Users', type: :system do
     include_context 'logged in user'
 
     before do
-      visit  edit_user_registration_path(user)
+      visit edit_user_registration_path(user)
     end
 
     it "ユーザー名が表示されること" do
@@ -155,7 +155,7 @@ RSpec.describe 'Users', type: :system do
       fill_in 'user[self_introduction]', with: '編集しました！'
       click_button '保存'
       expect(page).to have_content 'アカウント情報を変更しました。'
-      visit  user_path(user)
+      visit user_path(user)
       expect(page).to have_content '編集太郎'
       expect(page).to have_content '10年'
       expect(page).to have_content '編集洋平'

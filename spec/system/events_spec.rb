@@ -111,17 +111,17 @@ RSpec.describe 'Events', type: :system do
     before do
       visit search_events_path
     end
-    
+
     it "ホームへ戻るをクリックし、トップページへ遷移すること" do
       click_link 'ホームへ戻る'
       expect(current_path).to eq root_path
     end
-    
+
     it "募集中をクリックし、募集詳細ページへ遷移すること" do
       click_link '募集中'
-      expect(current_path).to eq event_event_listing_path(event,event_listing)
+      expect(current_path).to eq event_event_listing_path(event, event_listing)
     end
-    
+
     it "ユーザー名をクリックし、ユーザー詳細ページへ遷移すること" do
       click_link event_listing.user.name
       expect(current_path).to eq user_path(user)

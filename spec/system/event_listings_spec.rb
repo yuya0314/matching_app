@@ -10,7 +10,7 @@ RSpec.describe 'EventListings', type: :system do
       include_context 'logged in user'
 
       before do
-        visit event_event_listing_path(event,event_listing)
+        visit event_event_listing_path(event, event_listing)
       end
 
       it "参加できること" do
@@ -28,17 +28,17 @@ RSpec.describe 'EventListings', type: :system do
       let!(:event_registration) { FactoryBot.create(:event_registration, user: user, event_listing: event_listing) }
 
       include_context 'logged in user'
-  
+
       before do
-        visit event_event_listing_path(event,event_listing)
+        visit event_event_listing_path(event, event_listing)
       end
-  
+
       it "参加をキャンセルできること" do
-        click_on '参加をキャンセル'  
+        click_on '参加をキャンセル'
         expect(page).to have_content 'イベントへの参加をキャンセルしました'
         expect(page).to have_selector('input[type="submit"][value="参加する"]')
       end
-      
+
       it "参加者名をクリックした際、そのユーザーの詳細に遷移すること" do
         click_on user.name
         expect(current_path).to eq user_path(user)
@@ -53,27 +53,27 @@ RSpec.describe 'EventListings', type: :system do
       let!(:event_registration) { FactoryBot.create(:event_registration, user: second_user, event_listing: event_listing) }
 
       include_context 'logged in user'
-    
+
       before do
-        visit event_event_listing_path(event,event_listing)
+        visit event_event_listing_path(event, event_listing)
       end
-      
+
       it "ボタンが参加済と表示されること" do
         expect(page).to have_selector('input[type="submit"][value="参加済"]')
       end
 
       it "ホームへ戻るをクリックした際、トップページへ遷移すること" do
-        click_on 'ホームへ戻る'  
+        click_on 'ホームへ戻る'
         expect(current_path).to eq root_path
       end
 
       it "投稿編集をクリックした際、投稿編集ページへ遷移すること" do
-        click_on '投稿編集'  
-        expect(current_path).to eq edit_event_event_listing_path(event,event_listing)
+        click_on '投稿編集'
+        expect(current_path).to eq edit_event_event_listing_path(event, event_listing)
       end
 
       it "投稿削除をクリックした際、イベントを削除できること" do
-        click_on '投稿削除'  
+        click_on '投稿削除'
         expect(page).to have_content '投稿を削除しました'
         expect(EventListing.exists?(event_listing.id)).to be_falsey
         expect(EventRegistration.exists?(event_registration.id)).to be_falsey
@@ -89,7 +89,7 @@ RSpec.describe 'EventListings', type: :system do
     include_context 'logged in user'
 
     before do
-    visit edit_event_event_listing_path(event,event_listing)
+      visit edit_event_event_listing_path(event, event_listing)
     end
 
     it "編集できること" do
