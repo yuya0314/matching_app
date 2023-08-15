@@ -12,9 +12,9 @@ class EventListingsController < ApplicationController
 
   def create
     @event_listing = current_user.event_listings.build(event_listing_params)
-
     if @event_listing.save
-      redirect_to [@event,@event_listing]
+      flash[:success] = 'イベントを作成しました'
+      redirect_to [@event, @event_listing]
     else
       render 'events/show'
     end
@@ -41,19 +41,20 @@ class EventListingsController < ApplicationController
   private
 
   def event_listing_params
-    params.require(:event_listing).permit(:capacity, :deadline, :title, :message, :event_id, :has_ticket)
+    params.require(:event_listing).permit(:capacity, :deadline, :title, :message, :event_id,
+:has_ticket)
   end
-  
+
   def set_event_listing
     @event_listing = EventListing.find(params[:id])
   end
-  
+
   def set_event_listing_associations
     @event_listing = EventListing.includes(:event_registrations, :event, :user).find(params[:id])
   end
-  
+
   def set_event
-    @event = Event.find(params[:event_id]) 
+    @event = Event.find(params[:event_id])
   end
 
   def correct_user

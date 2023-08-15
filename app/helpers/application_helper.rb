@@ -2,12 +2,13 @@ module ApplicationHelper
   BASE_TITLE = "DRA-MATCH".freeze
 
   def full_title(page_title)
-      if page_title.blank?
+    if page_title.blank?
       BASE_TITLE
-      else
+    else
       "#{page_title} | #{BASE_TITLE}"
-      end
+    end
   end
+
   def bootstrap_class_for(flash_type)
     case flash_type
     when "success"

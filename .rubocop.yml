@@ -1,0 +1,19 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+LineLength:
+  Max: 130
+
+Airbnb/OptArgParameters:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/**/*'
+    - 'lib/tasks/*'
+    - 'vendor/**/*'
+    - 'path/ruby'
+    - 'spec/*'
+    - 'Gemfile'

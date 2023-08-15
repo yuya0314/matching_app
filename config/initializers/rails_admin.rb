@@ -2,7 +2,6 @@ RailsAdmin.config do |config|
   config.asset_source = :webpacker
 
   ### Popular gems integration
-
   ## == Devise ==
   config.authenticate_with do
     warden.authenticate! scope: :admin_user

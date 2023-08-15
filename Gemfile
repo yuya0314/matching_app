@@ -35,7 +35,6 @@ gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
 gem 'ransack'
 gem 'mysql2', '~> 0.5'
-gem 'will_paginate',           '3.3.1'
 gem 'will_paginate-bootstrap4'
 
 group :development, :test do
