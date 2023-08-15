@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show] do
     collection do
       get 'search'
+      get 'filtered_index'
     end
     resources :event_listings, only: [:show, :create, :edit, :update, :destroy]
   end
