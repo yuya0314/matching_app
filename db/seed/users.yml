@@ -1,0 +1,69 @@
+- name: "中日太郎"
+  email: "taro@example.com"
+  password: "password"
+  self_introduction: "仕事帰りに一緒に観戦行ける人を探しています!30代なので一緒の年齢の人歓迎です!"
+  fan_years: 5
+  favorite_player: "高橋周平"
+
+- name: "中日花子"
+  email: "hanako@example.com"
+  password: "password"
+  self_introduction: "毎週末、観戦に行ってます！一緒に盛り上がりましょう！"
+  fan_years: 10
+  favorite_player: "根尾昂"
+
+- name: "山田ドラ太"
+  email: "ichiro@example.com"
+  password: "password"
+  self_introduction: "ドラゴンズとオリックスが大好きです！一緒に観戦行く仲間を探しています。"
+  fan_years: 20
+  favorite_player: "福留孝介"
+
+- name: "山田ドラ子"
+  email: "jiro@example.com"
+  password: "password"
+  self_introduction: "中日ドラゴンズの新人ファンです！教えてくれる方、お待ちしています。"
+  fan_years: 1
+  favorite_player: "ビシエド"
+
+- name: "佐藤ドラ美"
+  email: "saburo@example.com"
+  password: "password"
+  self_introduction: "周りに一緒に行ける女性の中日ファン探したくて登録しました！人見知りですが、よろしくお願いします、"
+  fan_years: 3
+  favorite_player: "京田陽太"
+
+- name: "佐藤ドラ男"
+  email: "shiro@example.com"
+  password: "password"
+  self_introduction: "周りにドラゴンズファンが少なかったので登録しました！感染だけじゃなく一緒に飲みに行ける人ぜひ！"
+  fan_years: 15
+  favorite_player: "大野雄大"
+
+- name: "田中一郎"
+  email: "goro@example.com"
+  password: "password"
+  self_introduction: "中日ファン歴20年のベテランです!新しい友達を作りたいです。土日に一緒に行ける人ぜひ"
+  fan_years: 20
+  favorite_player: "落合博満"
+
+- name: "田中次郎"
+  email: "rokuro@example.com"
+  password: "password"
+  self_introduction: "ビールと一緒に観戦するのが大好きです！一緒に飲みながら観戦しませんか？"
+  fan_years: 7
+  favorite_player: "山本昌"
+
+- name: "のもとけ"
+  email: "shichiro@example.com"
+  password: "password"
+  self_introduction: "大阪出身の中日ファンです！名古屋で一緒に観戦する人、探しています！？"
+  fan_years: 10
+  favorite_player: "平田良介"
+
+- name: "ぱみゅぱみゅ"
+  email: "hachiro@example.com"
+  password: "password"
+  self_introduction:  "大学生で、中日ファンです！同じ大学生で中日ファンの方、一緒に観戦しませんか？"
+  fan_years: 8
+  favorite_player: "森野将彦"

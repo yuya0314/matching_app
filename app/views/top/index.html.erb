@@ -2,6 +2,11 @@
   <div class="container">
     <div class="text-center my-5">
       <h1 class="fw-bolder">ドラゴンズをもっと楽しく。<br>あなたの観戦体験を一緒にシェアしよう！</h1>
+      <% if current_user.present? %>
+        <%=link_to "一緒に行く人を探してみよう!", events_path, class: "fw-bolder btn btn-success my-4 p-3"%>
+      <% else %>
+        <%=link_to "無料登録してみよう！", new_user_registration_path, class: "fw-bolder btn btn-success my-4 p-3"%>
+      <% end %>
     </div>
   </div>
 </header>

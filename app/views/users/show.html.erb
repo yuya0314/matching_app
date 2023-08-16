@@ -20,7 +20,7 @@
     </div>
     <div class="col-md-8">
       <div class="profile-tab">
-        <div class="row">
+        <div class="row my-2">
           <div class="col-md-4">
             <label>ユーザー名</label>
           </div>
@@ -28,15 +28,15 @@
             <p><%= @user.name %></p>
           </div>
         </div>
-        <div class="row">
+        <div class="row my-2">
           <div class="col-md-4">
             <label>ファン歴</label>
           </div>
           <div class="col-md-8">
-            <p><%= "#{@user.fan_years}年" %></p>
+            <p><%= "#{@user.fan_years}年" if @user.fan_years.present? %></p>
           </div>
         </div>
-        <div class="row">
+        <div class="row my-2">
           <div class="col-md-4">
             <label>好きな選手</label>
           </div>
@@ -44,7 +44,7 @@
             <p><%= @user.favorite_player %></p>
           </div>
         </div>
-        <div class="row">
+        <div class="row my-2">
           <div class="col-md-4">
             <label>自己紹介</label>
           </div>

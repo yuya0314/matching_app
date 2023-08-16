@@ -47,10 +47,15 @@
               <h6><%= "参加メンバー(募集人数#{@event_listing.capacity}人)" %></h6>
               <% @event_registrations.each do |event_registration| %>
                 <% if event_registration.user.present? %>
-                  <div class="my-3">
-                    <%= image_tag event_registration.user.profile_image.url, class: "card-image rounded-circle" %>
-                    <%= link_to event_registration.user.name, event_registration.user,class:"user-name" %>
-                    <%= event_registration.comment %>
+                  <div class="my-3 d-flex justify-content-between">
+                    <div>
+                      <%= image_tag event_registration.user.profile_image.url, class: "card-image rounded-circle" %>
+                      <%= link_to event_registration.user.name, event_registration.user,class:"user-name" %>
+                      <%= event_registration.comment %>
+                    </div>
+                    <div class="mx-5">
+                      <%= link_to "DM", chat_rooms_path(params: { user_id: event_registration.user.id }), method: :post, class: "profile-edit-btn" %>
+                    </div>
                   </div>
                 <% end %>
               <% end %>
