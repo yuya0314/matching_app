@@ -57,7 +57,7 @@
 - name: "のもとけ"
   email: "shichiro@example.com"
   password: "password"
-  self_introduction: "大阪出身の中日ファンです！名古屋で一緒に観戦する人、探しています！？"
+  self_introduction: "大阪出身の中日ファンです！名古屋で一緒に観戦する人、探しています！"
   fan_years: 10
   favorite_player: "平田良介"
 

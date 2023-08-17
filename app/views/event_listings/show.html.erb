@@ -6,31 +6,37 @@
           <div class="d-flex justify-content-between">
             <%= link_to "ホームへ戻る",root_path,class: "eventlisting-edit-btn" %>
             <% if current_user == @event_listing.user %>
-            <div>
-              <%=link_to "投稿編集",[:edit, @event_listing.event, @event_listing],class: "eventlisting-edit-btn" %>
-              <%=link_to "投稿削除",[@event_listing.event, @event_listing],method: :delete,data: { confirm: '削除してもよろしいですか？'},class: "eventlisting-edit-btn" %>
-            </div>   
-        <% end %>
-        </div>
+              <div>
+                <%=link_to "投稿編集",[:edit, @event_listing.event, @event_listing],class: "eventlisting-edit-btn" %>
+                <%=link_to "投稿削除",[@event_listing.event, @event_listing],method: :delete,data: { confirm: '削除してもよろしいですか？'},class: "eventlisting-edit-btn" %>
+              </div>   
+            <% end %>
+          </div>
         <hr class="my-2">
         <div class="row justify-content-center">
           <div class="col-lg-9"> 
             <div class="card border border-info shadow-0 mb-3">
               <div class="card-header d-flex justify-content-between">
                 <span>
-                <%= "#{@event_listing.event.date.strftime("%m/%d")}  #{@event_listing.event.start_time.strftime("%H:%M")}〜" %>
+                  <%= "#{@event_listing.event.date.strftime("%m/%d")}  #{@event_listing.event.start_time.strftime("%H:%M")}〜" %>
                 </span>
                 <span>
-                <%= "#{@event_listing.event.match}  (#{@event_listing.event.location})" %>
+                  <%= "#{@event_listing.event.match}  (#{@event_listing.event.location})" %>
                 </span>
               </div>
               <div class="card-body">
-                <div class="card-title">
-                  <%= image_tag @event_listing.user.profile_image.url, class: "card-image rounded-circle" %>
-                  <%= link_to @event_listing.user.name, @event_listing.user,class:"user-name" %>
+                <div class="card-title d-flex justify-content-between p-2">
+                  <div>
+                    <%= image_tag @event_listing.user.profile_image.url, class: "card-image rounded-circle" %>
+                    <%= link_to @event_listing.user.name, @event_listing.user,class:"user-name" %>
+                  </div>
+                  <div>
+                    <%= link_to "DM", chat_rooms_path(params: { user_id: @event_listing.user.id }), method: :post, class: "p-2 profile-edit-btn" if current_user != @event_listing.user %>
+                  </div>
                 </div>
-                <h5 class="card-title"> <%= @event_listing.title %></h5>
-                <p class="card-text"> <%= @event_listing.message %></p>
+                <h5 class="card-title px-2"> <%= @event_listing.title %></h5>
+                <hr class="my-2">
+                <p class="card-text p-2"> <%= @event_listing.message %></p>
               </div>
               <div class="card-footer d-flex justify-content-between">
               <span><%= @event_listing.has_ticket ? "チケット有" : "チケット無" %></span>
@@ -54,7 +60,7 @@
                       <%= event_registration.comment %>
                     </div>
                     <div class="mx-5">
-                      <%= link_to "DM", chat_rooms_path(params: { user_id: event_registration.user.id }), method: :post, class: "profile-edit-btn" %>
+                      <%= link_to "DM", chat_rooms_path(params: { user_id: event_registration.user.id }), method: :post, class: "profile-edit-btn" if current_user != event_registration.user %>
                     </div>
                   </div>
                 <% end %>
