@@ -1,6 +1,9 @@
 <% provide(:title,'検索結果') %>
 <div class="container d-flex justify-content-center">
   <div class="row col-md-8 custyle ">
+    <% if @results.blank? %>
+      <h4 class="text-center py-5">該当する検索結果がありませんでした</h4>
+    <% else %>
     <table class="table table-striped custab">
       <thead>
         <tr class="text-center">
@@ -11,9 +14,6 @@
           <th></th>
         </tr>
       </thead>
-      <% if @results.blank? %>
-        <h4 class="text-center py-5">該当する検索結果がありませんでした</h4>
-      <% else %>
         <% @results.each do |event| %>
           <tr class="text-center">
           <td><%= event.date.strftime("%m/%d") %></td>
