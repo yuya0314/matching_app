@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   protected
 
-  before_action :ensure_normal_user, only: %i(update)
+  before_action :ensure_normal_user, only: :update
 
   def update_resource(resource, params)
     resource.update_without_current_password(params)
