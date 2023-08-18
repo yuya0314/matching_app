@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favorites/create'
+  get 'favorites/destroy'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :admin_users
   devise_for :users,
@@ -13,7 +15,9 @@ Rails.application.routes.draw do
       get 'search'
       get 'filtered_index'
     end
-    resources :event_listings, only: [:show, :create, :edit, :update, :destroy]
+    resources :event_listings, only: [:show, :create, :edit, :update, :destroy] do
+      resource :favorites, only: [:create, :destroy]
+    end
   end
   resources :event_registrations, only: [:create, :destroy]
   resources :chat_rooms, only: [:create, :show]
