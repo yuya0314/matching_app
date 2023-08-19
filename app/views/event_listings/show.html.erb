@@ -9,7 +9,9 @@
               <div>
                 <%=link_to "投稿編集",[:edit, @event_listing.event, @event_listing],class: "eventlisting-edit-btn" %>
                 <%=link_to "投稿削除",[@event_listing.event, @event_listing],method: :delete,data: { confirm: '削除してもよろしいですか？'},class: "eventlisting-edit-btn" %>
-              </div>   
+              </div>
+            <% else %>
+              <%= render "favorites/favorite" %>
             <% end %>
           </div>
         <hr class="my-2">
