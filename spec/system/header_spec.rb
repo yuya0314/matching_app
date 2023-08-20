@@ -43,8 +43,11 @@ RSpec.describe 'Header', type: :system do
     end
 
     it "ログインをクリックしたらログイン画面に遷移する" do
-      click_on '募集投稿'
-      expect(current_path).to eq events_path
+      all_link = all("a", text: "募集投稿")
+      all_link.each do |link|
+        link.click
+        expect(current_path).to eq events_path
+      end
     end
 
     it "ログインボタンが表示されること" do

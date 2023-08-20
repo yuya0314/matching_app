@@ -2,7 +2,7 @@ class EventListing < ApplicationRecord
   belongs_to :event
   belongs_to :user
   has_many :event_registrations, dependent: :destroy
-  has_many :favorites, dependent: :destroy 
+  has_many :favorites, dependent: :destroy
   validates :title, presence: true, length: { maximum: 20 }
   validates :deadline, presence: true
   validate :deadline_not_past

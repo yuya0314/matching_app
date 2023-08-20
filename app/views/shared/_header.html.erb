@@ -12,6 +12,8 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><%= link_to "マイページ", user_path(current_user), class: "dropdown-item" %></li>
               <li><a class="dropdown-item" href="/events">募集投稿</a></li>
+              <li><%= link_to "DM一覧", favorites_user_path(current_user), class: "dropdown-item" %></li>
+              <li><%= link_to "お気に入り一覧", favorites_user_path(current_user), class: "dropdown-item" %></li>
               <li><hr class="dropdown-divider" /></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
             </ul>

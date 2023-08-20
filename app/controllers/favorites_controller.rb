@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    if @event_listing.user_id != current_user.id   
+    if @event_listing.user_id != current_user.id
       @favorite = Favorite.create(user_id: current_user.id, event_listing_id: @event_listing.id)
     end
   end
@@ -14,6 +14,7 @@ class FavoritesController < ApplicationController
   end
 
   private
+
   def set_event_listing
     @event_listing = EventListing.find(params[:event_listing_id])
   end

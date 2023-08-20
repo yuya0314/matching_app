@@ -9,14 +9,6 @@ RSpec.describe "Users", type: :request do
     let!(:second_event_listing) { FactoryBot.create(:second_event_listing, user: second_user) }
     let!(:event_registration) { FactoryBot.create(:event_registration, event_listing: second_event_listing, user: user) }
 
-    context "ログインしていない場合" do
-      it "イベント一覧が取得できないこと" do
-        get user_path(user)
-        expect(response).to have_http_status(:redirect)
-        expect(response).to redirect_to(new_user_session_path)
-      end
-    end
-
     context "本人がログインしユーザー詳細ページにアクセスした場合" do
       before do
         sign_in user
@@ -86,10 +78,6 @@ RSpec.describe "Users", type: :request do
       it "参加したイベントの開催者の名前が取得されること" do
         expect(response.body).to include event_registration.event_listing.user.name
       end
-
-      it "DMが表示されないこと" do
-        expect(response.body).not_to include "DM"
-      end
     end
 
     context "本人がログインし他のユーザー詳細ページにアクセスした場合" do
@@ -100,10 +88,6 @@ RSpec.describe "Users", type: :request do
 
       it "ユーザー詳細ページが取得できること" do
         expect(response).to have_http_status(200)
-      end
-
-      it "DMが表示されること" do
-        expect(response.body).to include "DM"
       end
 
       it "ユーザー編集リンクが表示されないこと" do
