@@ -1,0 +1,13 @@
+<div id="favorite_<%= @event_listing.id %>" data-post-id="<%= @event_listing.id %>">
+<% if !Favorite.exists?(user: current_user, event_listing_id: @event_listing.id) %>
+  <%= link_to event_event_listing_favorites_path(@event_listing.event, @event_listing), method: :post, remote: true, class: 'btn-link' do %>
+    <i class="fa-regular fa-star"></i>
+    <span><%= @event_listing.favorites.length %></span>
+  <% end %>
+<% else %>
+  <%= link_to event_event_listing_favorites_path(@event_listing.event, @event_listing), method: :delete, remote: true, class: 'btn-link' do %>
+    <i class="fa-solid fa-star"></i>
+    <span><%= @event_listing.favorites.length %></span>
+  <% end %>
+<% end %>
+</div>

@@ -22,10 +22,13 @@ RSpec.describe 'Top', type: :system do
     end
 
     it "ページネーションで移動し、イベントの取得が9つ目だけであること" do
-      click_on '2'
-      expect(current_url).to eq "#{root_url}?page=2"
-      expect(page).to have_content event_listings[8].title
-      expect(page).not_to have_content event_listings[7].title
+      all_links = all('a', text: '2')
+      all_links.each do |link|
+        link.click
+        expect(current_url).to eq "#{root_url}?page=2"
+        expect(page).to have_content event_listings[8].title
+        expect(page).not_to have_content event_listings[7].title
+      end
     end
 
     it "募集中をクリックし、募集詳細ページへ遷移すること" do

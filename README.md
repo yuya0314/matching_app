@@ -7,7 +7,7 @@
  遠方に住んでいても、観戦仲間と一緒にドラゴンズの試合を楽しむことができます。
 
 
- <img width="1440" alt="スクリーンショット 2023-08-17 17 12 24" src="https://github.com/yuya0314/matching_app/assets/129703629/2e88d72b-a190-4754-a207-fb194c42a5f1">
+<img width="1440" alt="スクリーンショット 2023-08-20 17 08 35" src="https://github.com/yuya0314/matching_app/assets/129703629/1de6e8f6-daed-4591-8bb8-6db55a785ed9">
 
 
 # URL
@@ -32,8 +32,7 @@ https://dramatch-1b1caaa533d5.herokuapp.com/ <br >
 - GitHub
 
 # ER図
-<img width="515" alt="スクリーンショット 2023-08-17 20 36 28" src="https://github.com/yuya0314/matching_app/assets/129703629/dbfde22b-14ea-48bf-9c4b-73af3171f354">
-
+<img width="682" alt="スクリーンショット 2023-08-20 17 06 37" src="https://github.com/yuya0314/matching_app/assets/129703629/d119d46c-34fd-4068-8f93-5b50a5981da5">
 
 # 機能一覧
 - ユーザー登録、ログイン機能(devise)
@@ -51,6 +50,9 @@ https://dramatch-1b1caaa533d5.herokuapp.com/ <br >
 - DM機能
 <img width="1438" alt="スクリーンショット 2023-08-17 21 11 12" src="https://github.com/yuya0314/matching_app/assets/129703629/7a97a429-427e-4b41-b702-11988a4612ef"><br>
 
+- お気に入り機能(Ajax)
+<img width="1440" alt="スクリーンショット 2023-08-20 17 11 22" src="https://github.com/yuya0314/matching_app/assets/129703629/f8734ed2-b194-4959-a51b-13be583cc3ea"><br>
+-　人気投稿(ランキング機能)
 - ページネーション機能
 - 検索機能(ransack)
 

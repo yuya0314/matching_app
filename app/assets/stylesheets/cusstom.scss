@@ -1,4 +1,6 @@
 @import "bootstrap";
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+
 .navbar{
   background-color: #0a4275;
 }
@@ -22,4 +24,8 @@
 .footer-copyright{
   background-color: rgba(0, 0, 0, 0.2);
   color: white;
+}
+.btn-link {
+  text-decoration: none;
+  color: inherit;
 }

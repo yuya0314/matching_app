@@ -90,7 +90,9 @@ RSpec.describe 'Users', type: :system do
       end
 
       it "DMが表示されないこと" do
-        expect(page).not_to have_content "DM"
+        within ".emp-profile" do
+          expect(page).not_to have_content "DM"
+        end
       end
     end
 
