@@ -23,13 +23,9 @@ class EventRegistrationsController < ApplicationController
   end
 
   def approve
-      Rails.logger.info "Before update: #{@event_registration.inspect}"
-      @event_registration.update(status: "accepted")
-      Rails.logger.info "After update: #{@event_registration.inspect}"
-      flash[:success] = "参加リクエストを承認しました。"
-      redirect_to [@event_listing.event, @event_listing]
-
-    
+    @event_registration.update(status: "accepted")
+    flash[:success] = "参加リクエストを承認しました。"
+    redirect_to [@event_listing.event, @event_listing]
   end
 
   def decline

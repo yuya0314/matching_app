@@ -44,8 +44,12 @@ https://dramatch-1b1caaa533d5.herokuapp.com/ <br >
 <img width="720" alt="スクリーンショット 2023-08-17 17 16 42" src="https://github.com/yuya0314/matching_app/assets/129703629/b0b18c8c-37f7-4861-9b50-ed53107164b1"><br>
 
 <img width="720" alt="スクリーンショット 2023-08-17 17 20 02" src="https://github.com/yuya0314/matching_app/assets/129703629/e6a16f84-dec6-4d76-bdbd-b4e888257a97"><br>
+
 - 観戦イベントの参加機能
 <img width="1440" alt="スクリーンショット 2023-08-17 17 21 26" src="https://github.com/yuya0314/matching_app/assets/129703629/b400fea7-0264-47d5-92fd-d3d568f8bea9"><br>
+
+- 観戦イベントの参加承認機能
+<img width="1440" alt="スクリーンショット 2023-08-21 22 24 39" src="https://github.com/yuya0314/matching_app/assets/129703629/86c7a856-bc12-415c-83e7-b268dea8db50"><br>
 
 - DM機能(Active job)
 <img width="1438" alt="スクリーンショット 2023-08-17 21 11 12" src="https://github.com/yuya0314/matching_app/assets/129703629/7a97a429-427e-4b41-b702-11988a4612ef"><br>
