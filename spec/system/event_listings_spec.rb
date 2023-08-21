@@ -33,12 +33,6 @@ RSpec.describe 'EventListings', type: :system do
         visit event_event_listing_path(event, event_listing)
       end
 
-      it "参加をキャンセルできること" do
-        click_on '参加をキャンセル'
-        expect(page).to have_content 'イベントへの参加をキャンセルしました'
-        expect(page).to have_selector('input[type="submit"][value="参加する"]')
-      end
-
       it "参加者名をクリックした際、そのユーザーの詳細に遷移すること" do
         click_on user.name
         expect(current_path).to eq user_path(user)

@@ -6,8 +6,9 @@ class EventListingsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def show
-    @event_registration = @event_listing.event_registrations.find_by(user_id: current_user&.id)
-    @event_registrations = @event_listing.event_registrations.includes(:user)
+    @current_user_event_registration = @event_listing.event_registrations.find_by(user_id: current_user&.id)
+    @pending_event_registrations = @event_listing.event_registrations.includes(:user).pending
+    @accepted_event_registrations = @event_listing.event_registrations.includes(:user).accepted
   end
 
   def create

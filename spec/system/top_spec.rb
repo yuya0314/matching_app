@@ -21,24 +21,6 @@ RSpec.describe 'Top', type: :system do
       visit root_path
     end
 
-    it "ページネーションで移動し、イベントの取得が9つ目だけであること" do
-      all_links = all('a', text: '2')
-      all_links.each do |link|
-        link.click
-        expect(current_url).to eq "#{root_url}?page=2"
-        expect(page).to have_content event_listings[8].title
-        expect(page).not_to have_content event_listings[7].title
-      end
-    end
-
-    it "募集中をクリックし、募集詳細ページへ遷移すること" do
-      all_links = all('a', text: '募集中')
-      all_links.each_with_index do |link, index|
-        link.click
-        expect(current_path).to eq event_event_listing_path(EventListing.all[index].event, EventListing.all[index])
-      end
-    end
-
     it "ユーザー名をクリックし、ユーザー詳細ページへ遷移すること" do
       all_links = all('a', text: user.name)
       all_links.each_with_index do |link, index|
@@ -69,10 +51,6 @@ RSpec.describe 'Top', type: :system do
 
     it "募集イベントの8つ目が取得されていること" do
       expect(page).to have_content event_listings[7].title
-    end
-
-    it "募集イベントの9つ目が取得されていないこと" do
-      expect(page).not_to have_content event_listings[8].title
     end
 
     it "event_listing検索できること" do

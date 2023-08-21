@@ -1,7 +1,8 @@
 class EventRegistrationsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
-  before_action :set_event_registration, only: :destroy
-  before_action :correct_user, only: :destroy
+  before_action :set_event_registration, only: [:destroy, :approve, :decline]
+  before_action :destroy_correct_user, only: :destroy
+  before_action :approve_correct_user, only: :approve
 
   def create
     @event_registration = current_user.event_registrations.build(event_registrations_params)
@@ -17,7 +18,19 @@ class EventRegistrationsController < ApplicationController
 
   def destroy
     @event_registration.destroy
-    flash[:success] = 'イベントへの参加をキャンセルしました'
+    flash[:success] = '参加をキャンセルしました'
+    redirect_to [@event_listing.event, @event_listing]
+  end
+
+  def approve
+    @event_registration.update(status: "accepted")
+    flash[:success] = "参加リクエストを承認しました。"
+    redirect_to [@event_listing.event, @event_listing]
+  end
+
+  def decline
+    @event_registration.update(status: "declined")
+    flash[:success] = "参加リクエストを拒否しました。"
     redirect_to [@event_listing.event, @event_listing]
   end
 
@@ -32,9 +45,16 @@ class EventRegistrationsController < ApplicationController
     @event_listing = @event_registration.event_listing
   end
 
-  def correct_user
-    unless current_user == @event_registration.user
-      flash[:error] = '参加者のみが実行できます。'
+  def destroy_correct_user
+    if current_user != @event_registration.user && current_user != @event_listing.user
+      flash[:error] = '権限がありません。'
+      redirect_to root_path
+    end
+  end
+
+  def approve_correct_user
+    unless current_user == @event_listing.user
+      flash[:error] = '権限がありません。'
       redirect_to root_path
     end
   end
