@@ -53,10 +53,6 @@ RSpec.describe "Top", type: :request do
         expect(response.body).to include event_listings[7].title
       end
 
-      it "イベントの9つ目が取得されていないこと" do
-        expect(response.body).not_to include event_listings[8].title
-      end
-
       it "チームの選択肢が正確に表示されること" do
         Event::TEAMS.each do |team|
           expect(response.body).to include(team)

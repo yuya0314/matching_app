@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_18_122719) do
+ActiveRecord::Schema.define(version: 2023_08_21_064229) do
 
   create_table "admin_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2023_08_18_122719) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "comment"
+    t.integer "status", default: 0
     t.index ["event_listing_id"], name: "index_event_registrations_on_event_listing_id"
     t.index ["user_id"], name: "index_event_registrations_on_user_id"
   end

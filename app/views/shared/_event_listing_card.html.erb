@@ -13,10 +13,10 @@
         <%= link_to event_listing.user.name, event_listing.user,class:"user-name" %>
       </span>
       <span>
-      <% if event_listing.capacity-event_listing.event_registrations.count == 0 || event_listing.deadline < Date.today %>
+      <% if event_listing.capacity-event_listing.event_registrations.accepted.count == 0 || event_listing.deadline < Date.today %>
         <%= link_to "募集終了",[event_listing.event,event_listing],class:"btn btn-primary" %>
       <% else %>
-        <%= link_to "残り#{event_listing.capacity-event_listing.event_registrations.count}人 募集中",[event_listing.event,event_listing],class:"btn btn-primary" %>
+        <%= link_to "残り#{event_listing.capacity-event_listing.event_registrations.accepted.count}人 募集中",[event_listing.event,event_listing],class:"btn btn-primary" %>
       <% end %>
       </span>
       </div>

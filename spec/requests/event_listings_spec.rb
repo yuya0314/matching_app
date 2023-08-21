@@ -43,7 +43,7 @@ RSpec.describe "EventListings", type: :request do
       end
 
       it "締切が取得されること" do
-        deadline_display = "締切  #{event_listing.deadline.strftime("%m/%d")}"
+        deadline_display = "締切 #{event_listing.deadline.strftime("%m/%d")}"
         expect(response.body).to include deadline_display
       end
 
@@ -94,8 +94,8 @@ RSpec.describe "EventListings", type: :request do
         get event_event_listing_path(event, event_listing)
       end
 
-      it "参加ボタンが'参加をキャンセル'と表示されること" do
-        expect(response.body).to include '参加をキャンセル'
+      it "参加ボタンが'承認待ち'と表示されること" do
+        expect(response.body).to include '承認待ち'
       end
     end
 

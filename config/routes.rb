@@ -21,6 +21,11 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
   end
-  resources :event_registrations, only: [:create, :destroy]
+  resources :event_registrations, only: [:create, :destroy] do
+    member do
+      patch :approve
+      patch :decline
+    end
+  end
   resources :chat_rooms, only: [:create, :show]
 end
