@@ -1,7 +1,7 @@
 class TopController < ApplicationController
   PER_PAGE = 8
   def index
-    @event_listings = EventListing.includes(:event, :user).joins(:event).merge(Event.upcoming).
+    @event_listings = EventListing.includes(:event, :user).joins(:event).merge(Event.upcoming).order('event_listings.created_at DESC').
       paginate(page: params[:page], per_page: PER_PAGE)
     @favorite_event_listings = EventListing.includes(:event, :user).joins(:event).merge(Event.upcoming).
       left_joins(:favorites).
