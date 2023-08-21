@@ -1,26 +1,25 @@
-<% provide(:title,'DM') %>
+<% provide(:title, 'DM') %>
 <div class="container emp-profile">
-  
   <div class="row justify-content-center">
     <div class="col-md-10 py-5">
       <nav>
         <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">お気に入り</button>
-            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">メッセージ</button>
+          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">お気に入り</button>
+          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">メッセージ</button>
         </div>
       </nav>
       <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        <% @event_listings.each do |event_listing|%>
+          <% @event_listings.each do |event_listing|%>
             <%= render 'shared/event_listing_card', event_listing: event_listing %>
           <% end %>
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <% @chat_room_users.each_with_index do |user, index|%>
+          <% @chat_room_users.each_with_index do |user, index|%>
             <div class="card border border-info shadow-0 mb-3">
               <div class="card-header">
                 <%= image_tag user.profile_image.url, class: "card-image rounded-circle" %>
-                <%= link_to user.name, user, class:"user-name" %>
+                <%= link_to user.name, user, class: "user-name" %>
               </div>
               <div class="card-body">
                 <div class="card-title d-flex justify-content-between p-2">
@@ -34,10 +33,6 @@
               </div>
             </div>
           <% end %>
-          
-  </div>
-</div>
-
         </div>
       </div>
     </div>
