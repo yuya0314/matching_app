@@ -32,7 +32,7 @@ https://dramatch-1b1caaa533d5.herokuapp.com/ <br >
 - GitHub
 
 # ER図
-<img width="682" alt="スクリーンショット 2023-08-20 17 06 37" src="https://github.com/yuya0314/matching_app/assets/129703629/d119d46c-34fd-4068-8f93-5b50a5981da5">
+<img width="636" alt="スクリーンショット 2023-08-21 22 59 03" src="https://github.com/yuya0314/matching_app/assets/129703629/f8bf533e-eeb9-49b4-8e27-97cee6f369d4">
 
 # 機能一覧
 - ユーザー登録、ログイン機能(devise)
