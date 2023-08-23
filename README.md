@@ -27,6 +27,8 @@ https://dramatch-1b1caaa533d5.herokuapp.com/ <br >
 - Ruby on Rails 6.1.7.4
 - MySQL 5.7
 - Docker/Docker-compose
+- Heroku
+- AWS(S3)
 - RSpec
 - Rubocop
 - GitHub
@@ -56,7 +58,6 @@ https://dramatch-1b1caaa533d5.herokuapp.com/ <br >
 
 - お気に入り機能(Ajax)
 <img width="1440" alt="スクリーンショット 2023-08-20 17 11 22" src="https://github.com/yuya0314/matching_app/assets/129703629/f8734ed2-b194-4959-a51b-13be583cc3ea"><br>
-
 - 人気投稿(ランキング機能)
 - ページネーション機能
 - 検索機能(ransack)
