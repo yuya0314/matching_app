@@ -33,6 +33,7 @@ gem 'rails_admin'
 gem 'rails_admin-i18n'
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
+gem "fog-aws"
 gem 'ransack'
 gem 'mysql2', '~> 0.5'
 gem 'will_paginate-bootstrap4'
