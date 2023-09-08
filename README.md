@@ -53,7 +53,7 @@ https://dramatch-1b1caaa533d5.herokuapp.com/ <br >
 - 観戦イベントの参加承認機能
 <img width="1440" alt="スクリーンショット 2023-08-21 22 24 39" src="https://github.com/yuya0314/matching_app/assets/129703629/86c7a856-bc12-415c-83e7-b268dea8db50"><br>
 
-- DM機能(Active job)
+- DM機能(Active Cable)
 <img width="1438" alt="スクリーンショット 2023-08-17 21 11 12" src="https://github.com/yuya0314/matching_app/assets/129703629/7a97a429-427e-4b41-b702-11988a4612ef"><br>
 
 - お気に入り機能(Ajax)
