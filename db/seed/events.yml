@@ -726,3 +726,18 @@
   match: "巨人"
   location: "東京ドーム"
   start_time: "18:00:00"
+
+- date: 2023-10-01
+  match: "DeNA"
+  location: "横浜スタジアム"
+  start_time: "14:00:00"
+
+- date: 2023-10-03
+  match: "巨人"
+  location: "バンテリンドーム"
+  start_time: "18:00:00"
+
+- date: 2023-10-24
+  match: "阪神"
+  location: "甲子園"
+  start_time: "18:00:00"
